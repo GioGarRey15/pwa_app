@@ -1,0 +1,55 @@
+{
+  "name": "FitPulse Studio - Gimnasio & Cronómetro HIIT",
+  "short_name": "FitPulse",
+  "description": "Aplicación PWA de seguimiento de entrenamientos, temporizador de descanso HIIT, bitácora de ejercicios, contador de agua y notificaciones web offline.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#09090b",
+  "theme_color": "#f43f5e",
+  "lang": "es",
+  "categories": ["fitness", "sports", "productivity", "health"],
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Cronómetro HIIT",
+      "short_name": "Cronómetro",
+      "description": "Iniciar temporizador de descanso o rutina HIIT",
+      "url": "./index.html#timer",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Nueva Rutina",
+      "short_name": "Entrenar",
+      "description": "Registrar nueva serie y repeticiones",
+      "url": "./index.html#workout",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f43f5e" />
+  <meta name="description" content="FitPulse Studio – App PWA de entrenamiento con temporizador HIIT, bitácora de rutinas, seguimiento de hidratación y notificaciones offline." />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="FitPulse" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FitPulse Studio – HIIT & Workout Tracker" />
+  <meta property="og:description" content="Aplicación PWA de entrenamiento con temporizador HIIT, bitácora de ejercicios y notificaciones offline." />
+  <meta property="og:type" content="website" />
+
+  <title>FitPulse Studio – Cronómetro HIIT & Registro de Entrenamiento</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="./manifest.json" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/svg+xml" href="./icons/icon.svg" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== OFFLINE BANNER ===== -->
+  <div id="offlineBanner" class="offline-banner hidden" role="alert" aria-live="assertive">
+    <span>📡 Sin conexión – La app sigue funcionando sin internet</span>
+    <button onclick="document.getElementById('offlineBanner').classList.add('hidden')" aria-label="Cerrar aviso">✕</button>
+  </div>
+
+  <!-- ===== APP SHELL ===== -->
+  <div class="app-container">
+
+    <!-- Header -->
+    <header class="app-header" role="banner">
+      <div class="brand">
+        <img src="./icons/icon.svg" alt="FitPulse Logo" class="brand-icon" width="46" height="46" />
+        <h1 class="brand-title">FitPulse Studio</h1>
+      </div>
+      <div class="header-actions">
+        <span id="connectionStatus" class="badge-status online" role="status">
+          <span class="status-dot" aria-hidden="true"></span> Online
+        </span>
+      </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="nav-tabs" id="tabBar" role="tablist" aria-label="Navegación principal"></nav>
+
+    <!-- Tab Panels -->
+    <main id="mainContent" role="main">
+      <div id="panel_timer" class="tab-panel" role="tabpanel" aria-labelledby="tab_timer"></div>
+      <div id="panel_workout" class="tab-panel hidden" role="tabpanel" aria-labelledby="tab_workout"></div>
+      <div id="panel_hydration" class="tab-panel hidden" role="tabpanel" aria-labelledby="tab_hydration"></div>
+      <div id="panel_notif" class="tab-panel hidden" role="tabpanel" aria-labelledby="tab_notif"></div>
+    </main>
+
+  </div>
+
+  <!-- ===== PWA INSTALL TOAST ===== -->
+  <div id="installToast" class="install-toast hidden" role="dialog" aria-label="Instalar aplicación">
+    <div class="install-toast-content">
+      <img src="./icons/icon.svg" alt="" width="36" height="36" aria-hidden="true" />
+      <div>
+        <strong>Instalar FitPulse Studio</strong>
+        <p style="margin:0;font-size:0.85rem;color:var(--text-muted)">Acceso rápido y modo offline</p>
+      </div>
+    </div>
+    <div style="display:flex; gap:0.5rem">
+      <button class="btn btn-primary" id="btnInstallFromToast" onclick="PWAManager.triggerInstall()">Instalar</button>
+      <button class="btn" onclick="document.getElementById('installToast').classList.add('hidden')" aria-label="Cerrar">✕</button>
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="./js/notifications.js"></script>
+  <script src="./js/pwa.js"></script>
+  <script src="./js/timer.js"></script>
+  <script src="./js/app.js"></script>
+
+</body>
+</html>

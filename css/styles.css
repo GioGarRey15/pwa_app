@@ -1,0 +1,947 @@
+/* ==========================================================================
+   FitPulse Studio PWA - Cyberpunk Athletic Glassmorphism Stylesheet
+   ========================================================================== */
+
+:root {
+  --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+
+  --bg-dark: #09090b;
+  --bg-card: rgba(24, 24, 27, 0.75);
+  --border-card: rgba(255, 255, 255, 0.1);
+  --glass-blur: blur(16px);
+
+  --primary: #f43f5e;
+  --primary-glow: rgba(244, 63, 94, 0.35);
+  --secondary: #06b6d4;
+  --secondary-glow: rgba(6, 182, 212, 0.35);
+  --emerald: #10b981;
+  --gold: #f59e0b;
+
+  --text-main: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --text-dim: #71717a;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  background: radial-gradient(circle at 10% 20%, rgba(244, 63, 94, 0.12) 0%, rgba(9, 9, 11, 1) 50%),
+              radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.12) 0%, rgba(9, 9, 11, 1) 50%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+.app-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  padding-bottom: 5rem;
+  box-sizing: border-box;
+}
+
+/* Header & Status Bar */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px var(--primary-glow);
+}
+
+.brand-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #ffffff 0%, #f43f5e 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-card);
+}
+
+.badge-status.online {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.badge-status.offline {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.3);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* Offline Banner Bar */
+.offline-banner {
+  background: linear-gradient(90deg, rgba(244, 63, 94, 0.9) 0%, rgba(225, 29, 72, 0.9) 100%);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(244, 63, 94, 0.25);
+}
+
+.offline-banner.hidden { display: none; }
+
+/* Action Buttons */
+.btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  color: var(--text-main);
+  padding: 0.65rem 1.2rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  backdrop-filter: var(--glass-blur);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, #e11d48 100%);
+  border: none;
+  color: #fff;
+  box-shadow: 0 4px 16px var(--primary-glow);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #fb7185 0%, var(--primary) 100%);
+}
+
+.btn-cyan {
+  background: linear-gradient(135deg, var(--secondary) 0%, #0284c7 100%);
+  border: none;
+  color: #fff;
+  box-shadow: 0 4px 16px var(--secondary-glow);
+}
+
+/* Glass Cards */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Tab Navigation Bar */
+.nav-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  background: rgba(24, 24, 27, 0.6);
+  padding: 0.4rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-card);
+  overflow-x: auto;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tab-btn:hover { color: #fff; }
+
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--primary) 0%, #e11d48 100%);
+  color: #fff;
+  box-shadow: 0 4px 14px var(--primary-glow);
+}
+
+/* Rest Timer & HIIT Section */
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0;
+}
+
+.timer-circle-wrapper {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin-bottom: 1.5rem;
+}
+
+.timer-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.timer-bg-ring {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 12;
+}
+
+.timer-progress-ring {
+  fill: none;
+  stroke: url(#timerGrad);
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 722;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.4s ease;
+}
+
+.timer-display {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-digits {
+  font-size: 3.8rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.timer-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.preset-timer-btns {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.preset-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-card);
+  color: var(--text-main);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.preset-btn:hover, .preset-btn.active {
+  background: var(--secondary);
+  color: #fff;
+  border-color: var(--secondary);
+  box-shadow: 0 2px 10px var(--secondary-glow);
+}
+
+/* Workout Logger Section */
+.workout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.exercise-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: var(--transition);
+}
+
+.exercise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exercise-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.badge-pr {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.sets-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sets-table th {
+  text-align: left;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+}
+
+.sets-table td {
+  padding: 0.4rem 0;
+}
+
+.input-num {
+  width: 60px;
+  padding: 0.4rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-card);
+  color: #fff;
+  font-size: 0.95rem;
+  text-align: center;
+  outline: none;
+}
+
+.input-num:focus {
+  border-color: var(--primary);
+}
+
+.check-set {
+  width: 26px;
+  height: 26px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* Hydration Tracker Card */
+.water-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: radial-gradient(circle at 10% 50%, rgba(6, 182, 212, 0.2) 0%, rgba(24, 24, 27, 0.8) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.water-val {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+/* Modals & Notifications Drawer */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background: #18181b;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-xl);
+  max-width: 520px;
+  width: 90%;
+  padding: 2rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+.notification-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.toggle-switch {
+  position: relative;
+  width: 48px;
+  height: 26px;
+}
+
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 34px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+input:checked + .slider { background-color: var(--primary); }
+input:checked + .slider:before { transform: translateX(22px); }
+
+/* PWA Install Toast */
+.install-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  left: 2rem;
+  max-width: 420px;
+  margin: 0 auto;
+  background: rgba(24, 24, 27, 0.95);
+  border: 1px solid var(--primary);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 10px 30px var(--primary-glow);
+  z-index: 900;
+}
+
+.install-toast.hidden { display: none; }
+
+.install-toast-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+/* ============================================================
+   SECTION UTILITIES
+   ============================================================ */
+.tab-panel.hidden { display: none; }
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0 0 0.25rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f43f5e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0 0 1.5rem;
+}
+
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.subsection-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 1.25rem 0 0.75rem;
+  color: var(--text-main);
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 1.5rem 0;
+}
+
+/* ============================================================
+   TIMER CONTROLS
+   ============================================================ */
+.timer-controls {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ============================================================
+   HIIT SECTION
+   ============================================================ */
+.hiit-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hiit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.hiit-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+}
+
+.hiit-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-2px);
+}
+
+.hiit-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.hiit-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.hiit-info strong {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.hiit-info span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.35) !important;
+}
+
+/* ============================================================
+   WORKOUT LOG
+   ============================================================ */
+.log-history-card { margin-top: 0; }
+
+.log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.log-list::-webkit-scrollbar { width: 4px; }
+.log-list::-webkit-scrollbar-track { background: transparent; }
+.log-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+.log-entry {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+  transition: var(--transition);
+}
+
+.log-entry.log-pr {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.log-entry-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.log-time {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.log-entry-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.log-set {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.log-volume {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.set-num {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  background: rgba(244, 63, 94, 0.2);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.empty-log {
+  text-align: center;
+  color: var(--text-dim);
+  padding: 2rem 0;
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   HYDRATION TRACKER
+   ============================================================ */
+.water-card-main {}
+
+.water-progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.water-bottle-visual {
+  width: 80px;
+  height: 200px;
+  background: rgba(6, 182, 212, 0.08);
+  border: 2px solid rgba(6, 182, 212, 0.3);
+  border-radius: 12px 12px 20px 20px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.water-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, rgba(6, 182, 212, 0.5) 0%, rgba(6, 182, 212, 0.85) 100%);
+  transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0 0 18px 18px;
+}
+
+.water-percentage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.water-stats {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.water-stat-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.water-val {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #38bdf8;
+  line-height: 1;
+}
+
+.water-stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.water-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.water-stat-num {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.water-add-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.water-btn {
+  font-size: 0.85rem;
+  padding: 0.5rem 0.85rem;
+}
+
+.water-goal-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.water-goal-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.water-log-list {
+  margin-top: 1rem;
+}
+
+/* ============================================================
+   NOTIFICATIONS PANEL
+   ============================================================ */
+.notif-permission-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+}
+
+.notif-status {
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+  font-weight: 600;
+}
+
+.notif-granted { color: #34d399; }
+.notif-denied { color: #f87171; }
+.notif-default { color: #fbbf24; }
+
+.notif-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.notif-desc {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.pwa-status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.pwa-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-card);
+}
+
+.pwa-stat-icon {
+  font-size: 1.6rem;
+}
+
+.pwa-stat-val {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+/* ============================================================
+   IN-APP TOAST NOTIFICATION
+   ============================================================ */
+.in-app-toast {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  max-width: 360px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid transparent;
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.in-app-toast.toast-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-success {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(52, 211, 153, 0.3);
+  color: #34d399;
+}
+
+.toast-error {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: #f87171;
+}
+
+.toast-info {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.3);
+  color: #38bdf8;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .brand-title { font-size: 1.2rem; }
+  .timer-digits { font-size: 3rem; }
+  .timer-circle-wrapper { width: 210px; height: 210px; }
+  .glass-card { padding: 1.25rem; }
+  .water-progress-wrapper { flex-direction: column; align-items: flex-start; }
+  .hiit-card { flex-wrap: wrap; }
+  .section-header-row { flex-direction: column; }
+  .pwa-status-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 400px) {
+  .nav-tabs { gap: 0.25rem; }
+  .tab-btn { font-size: 0.8rem; padding: 0.6rem 0.6rem; }
+  .in-app-toast { right: 1rem; left: 1rem; max-width: 100%; }
+}
+
